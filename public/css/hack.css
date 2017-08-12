@@ -1,0 +1,17 @@
+.jumbotron{
+	background-image: url("http://github-images.s3.amazonaws.com/blog/2011/cc-wallpaper-desktop.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 1110px;
+}
+.jumbotron p {
+	color: rgb(255,255,255);
+}
+.imgWidth {
+  width: 50px;
+  padding-left: 50px;
+}
+
+.input-group h3 {
+	color: rgb(0,100,255);
+}
