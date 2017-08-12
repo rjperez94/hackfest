@@ -3,5 +3,7 @@ extends ../shared/layout.pug
 block content
   h1= title
   include ../shared/nav.pug
-  p
-    #{json}
+  for person in user
+    div(class='sampleNameOfDiv')
+      h2= person.id
+        p #{person.name}

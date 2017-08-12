@@ -20,6 +20,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "hashcode": "^1.0.3",
+    "mkdirp": "^0.5.1",
     "morgan": "^1.7.0",
     "node-fetch": "^1.7.2",
     "octonode": "^0.8.0",

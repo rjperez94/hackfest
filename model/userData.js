@@ -20,12 +20,12 @@ var User = function(userjson) {
 
 User.prototype.setFollowers = function() {
 	if(this.followers == null)
-		this.followers = //api call;
+		this.followers = null;//api call;
 }
 
 User.prototype.setFollowing = function() {
 	if(this.following == null)
-		this.following = //api call;
+		this.following = null;//api call;
 }
 
 //===========================================
