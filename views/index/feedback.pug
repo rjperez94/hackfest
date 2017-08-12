@@ -1,0 +1,18 @@
+extends ../shared/layout.pug
+
+block content
+  h1= title
+  if(title === 'KPSmart - Restricted Access')
+    each val in feedback
+      div(class='alert alert-danger')
+        text= val
+
+    p
+      a(
+        href='/'
+      ) Home
+  else
+    include ../shared/nav.pug
+    each val in feedback
+      div(class='alert alert-success')
+        text= val
