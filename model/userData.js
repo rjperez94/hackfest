@@ -9,13 +9,15 @@
 // var following = user.following(callback); //return array of users
 
 
-
-//put User in separate file
+/* list of users in Wellington -- use login + id to get to each user's profile */
 
 var User = function(listjson) {
 	this.login = listjson.login; // = get name from json
 	this.id = listjson.id; //ONLY for unique id?
 }
+
+
+			/** STATS FOR EACH USER */
 
 User.prototype.setName = function() {
 	if(listjson.name != null)
@@ -32,11 +34,21 @@ User.prototype.setBio = function() {
 		this.bio = listjson.bio;
 }
 
+User.prototype.setEmail = function() {
+	if(listjson.email != null)
+		this.email = listjson.email;
+}
+
 User.prototype.set = function(userjson) {
 	this.public_repos = userjson.public_repos;
 	this.public_gists = userjson.public_gists;
+
 	this.followers = userjson.followers;
 	this.following = userjson.following;
+
+	this.hireable = userjson.hireable
+
+	this.avatar_url = userjson.avatar_url;
 }
 //========================================================
 
