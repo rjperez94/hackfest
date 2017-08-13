@@ -53,29 +53,26 @@ block content
                 .col-sm-12
                   .row.text-center
                     .col-sm-4
-                      p Contributions
-                      h3  3441
+                      p Gist
+                      h3  #{person.public_gists}
                     .col-sm-4
                       p Repositories
-                      h3 53
+                      h3 #{person.public_repos}
                     .col-sm-4
-                      p Stars
+                      p Contributions
                       h3 220
                   .row.text-center.info1
                     .col-sm-4
                       p Followers
-                      h3  290
+                      h3  #{person.followers}
                     .col-sm-4
                       p Following
-                      h3 53
-                    .col-sm-4
-                      p Stars
-                      h3 220
+                      h3 #{person.following}
                   .row
                     .col-sm-12
-                      p http:bluhbluh.com
+                      p #{person.blog}
                       p
-                        a(href='#')  jere@email.com
+                        a(href= 'mailto:'+person.email)  #{person.email}
               hr
               .row
                 .col-sm-12

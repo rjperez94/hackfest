@@ -52,7 +52,7 @@ User.prototype.setEmail = function() {
 }
 
 User.prototype.getUrl = function() {
-	return this.url;	
+	return this.url;
 }
 //========================================================
 
