@@ -1,64 +1,85 @@
 extends ../shared/layout.pug
 
 block content
-  //h1= title
-  //include ../shared/nav.pug
-  //  for person in user
-  //    div(class='sampleNameOfDiv')
-  //      h2= person.id
-  //        p #{person.name}
 
-  .container
-    .page-header
-      h1 Git Scout
-    .jumbotron
-      p Git Search
-      // search box
-      .input-group
-        input.form-control(type='text', placeholder='Search for...')
-        span.input-group-btn
-          button.btn.btn-secondary(type='button') Go!
-      // drop down
-      .dropdown.show
-        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          | Location
-        .dropdown-menu(aria-labelledby='dropdownMenuLink')
-          a.dropdown-item(href='#') Wellington
-          a.dropdown-item(href='#') Auckland
-          a.dropdown-item(href='#') Other
-        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          | Language
-        .dropdown-menu(aria-labelledby='dropdownMenuLink')
-          a.dropdown-item(href='#') Python
-          a.dropdown-item(href='#') Ruby
-          a.dropdown-item(href='#') Java
-  // User box things
-  .container
-    ul
+    .container
+      .page-header
+        h1 Git Scout
+      .jumbotron
+        p Git Search
+        // search box
+        .input-group
+          input.form-control(type='text', placeholder='Search for...')
+          span.input-group-btn
+            button.btn.btn-secondary(type='button') Go!
+        // drop down
+        .dropdown.show
+          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Location
+          .dropdown-menu(aria-labelledby='dropdownMenuLink')
+            a.dropdown-item(href='#') Wellington
+            a.dropdown-item(href='#') Auckland
+            a.dropdown-item(href='#') Other
+          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Language
+          .dropdown-menu(aria-labelledby='dropdownMenuLink')
+            a.dropdown-item(href='#') Python
+            a.dropdown-item(href='#') Ruby
+            a.dropdown-item(href='#') Java
+    // User box thing
+    .container
       .row
-        // ==============START OF FIXED NUM OF PEOPLE TO DISPLAY=========
         for person in user
-          .col-lg-3.col-md-3.col-sm-6
-            img.imgWidth(src='https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg')
-            h4 #{person.name}
-            p
-              | Followers: 200
-              br
-              |  Following: 15
-              br
-              |  Stars: 2290
-              br
-              |  Repositories: 18
-              br
-              |  Location: Wellington, New Zealand
-              br
-            // FIXME Collapse not
-            p
-              a(href='#col1Addition', data-toggle='collapse') move info
-            #col1Addition.collapse
-              p Number of projects: 23
-              p Looking for job: Y
-              // message box
-              .container
-                label(for='') Message:
-                textarea#message.form-control(rows='1')
+          .col-md-3.col-sm-6.user
+            .usercontent
+              .row.text-center.languages
+                .col-sm-12
+                  .row
+                    .col-sm-4
+                      p javascript
+                    .col-sm-4
+                      p Python
+                    .col-sm-4
+                      p Java
+                  .row
+                    .col-sm-4
+                      p javascript
+                    .col-sm-4
+                      p Python
+                    .col-sm-4
+                      p Java
+              hr
+              .row.info
+                .col-sm-12
+                  .row.text-center
+                    .col-sm-4
+                      p Contributions
+                      h3  3441
+                    .col-sm-4
+                      p Repositories
+                      h3 53
+                    .col-sm-4
+                      p Stars
+                      h3 220
+                  .row.text-center.info1
+                    .col-sm-4
+                      p Followers
+                      h3  290
+                    .col-sm-4
+                      p Following
+                      h3 53
+                    .col-sm-4
+                      p Stars
+                      h3 220
+                  .row
+                    .col-sm-12
+                      p http:bluhbluh.com
+                      p
+                        a(href='#')  jere@email.com
+              hr
+              .row
+                .col-sm-12
+                  p Per Something
+                  p
+                    img(src='https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg', width='15px')
+                    |  New Zealand

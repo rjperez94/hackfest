@@ -8,10 +8,35 @@
 	color: rgb(255,255,255);
 }
 .imgWidth {
-  width: 50px;
+  width: 65%;
   padding-left: 50px;
 }
 
 .input-group h3 {
 	color: rgb(0,100,255);
+}
+.usercontent{
+	padding: 10px;
+	box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.43);
+	border-radius: 5px;
+	border: 1px;
+}
+.container ul .row{
+	font-size:12px;
+}
+.container ul .row{
+	padding-top: 0px;
+}
+.row .languages{
+	/*background-color: red;*/
+	height: 30px;
+}
+
+.info1{
+	padding-bottom: 20px;
+}
+.row .text-center .row{
+	/*background-color: red;*/
+	height: 20px;
+	padding: 0px;
 }
