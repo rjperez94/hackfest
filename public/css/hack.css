@@ -36,8 +36,13 @@ h1 {
 }
 
 .info1{
+
 	padding-bottom: 20px;
 }
+.company{
+	padding-bottom: 0px;
+}
+
 .row .text-center .row{
 	/*background-color: red;*/
 	height: 20px;

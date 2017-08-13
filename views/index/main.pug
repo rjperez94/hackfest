@@ -4,7 +4,7 @@ block content
 
     .container
       .page-header
-        h1 Git Scout
+        h1 gitscout
       .jumbotron
         form(method='get')
           select(name='sort')
@@ -86,9 +86,10 @@ block content
                   h3
                     a(href='http://www.github.com/'+person.login) #{person.login}
                   p  #{person.name}
-                  if person.company
-                    p #{person.company}
-                  else
-                    p  No Company
-                  p
-                    |  Wellington, New Zealand
+                  .company
+                    if person.company
+                      p #{person.company}
+                    else
+                      p  No Company
+                    p
+                      |  Wellington, New Zealand
