@@ -6,19 +6,6 @@ var express = require('express');
 var encode = require( 'hashcode' ).hashCode;
 var fs = require('fs');
 var router = express.Router();
-var github = require('octonode');
-var fetch = require('node-fetch');
-var User = require('../model/userData.js');
-
-'use strict';
-var mkdirp = require('mkdirp');
-var getDirName = require('path').dirname;
-
-var express = require('express');
-var encode = require( 'hashcode' ).hashCode;
-var fs = require('fs');
-var router = express.Router();
-var github = require('octonode');
 var fetch = require('node-fetch');
 var User = require('../model/userData.js');
 
@@ -81,10 +68,9 @@ function renderHome (res, users) {
 //======================================================================================
 
 router.get('/test', function(req, res) {
-    var key ='&access_token=2e021ca997c1f7a8dd55b0884df4bc458d19a780';
-    var hash = encode().value( req.query.query + key);
+    var hash = encode().value( req.query.query);
     var fname = "data/test/"+hash+".json";
-    fetch(req.query.query + key)
+    fetch(req.query.query)
        .then(function(res) {
            return res.json();
        }).then(function(json) {
@@ -97,13 +83,13 @@ router.get('/test', function(req, res) {
 
                 var list = json.items.map(function(user) {return new User(user);})
 
-                array.forEach(function(item) {
+                list.forEach(function(item) {
 
-                  fetch(item.getUrl())
+                  fetch(item.url)
                      .then(function(res2) {
                          return res2.json();
                      }).then(function(json2) {
-                        var hash2 = encode().value( item.getUrl() );
+                        var hash2 = encode().value( item.url );
                         var fname2 = "data/test/"+hash2+".json";
                         console.log(hash2);
                         console.log(fname2);
