@@ -25,6 +25,11 @@ var User = function(userjson) {
 
 	this.avatar_url = userjson.avatar_url;
 	this.url = userjson.url;
+
+	this.name = userjson.name;
+	this.bio = userjson.bio;
+	this.company = userjson.company;
+	this.email = userjson.email;
 	this.blog = userjson.blog;
 }
 
