@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
         fs.readFile(fname, function (err, data) {
           var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
           renderHome(res, users); //render
-        });     
+        });
 });
 
 //================================================================================================
@@ -43,18 +43,18 @@ function sortUsers (req, users) {
 /** SORTING USERS BY FILTER */
 var SORTERS = {
   'sortByRepos': function sortByRepos(a, b){
-    if(a.public_repos < b.public_repos) return -1;
-    if(a.public_repos > b.public_repos) return 1;
+    if(a.public_repos > b.public_repos) return -1;
+    if(a.public_repos < b.public_repos) return 1;
     return 0;
   },
   'sortByGists': function sortByGists(a, b){
-    if(a.public_gists < b.public_gists) return -1;
-    if(a.public_gists > b.public_gists) return 1;
+    if(a.public_gists > b.public_gists) return -1;
+    if(a.public_gists < b.public_gists) return 1;
     return 0;
   },
   'sortByFollowers': function sortByFollowers(a, b){
-    if(a.followers < b.followers) return -1;
-    if(a.followers > b.followers) return 1;
+    if(a.followers > b.followers) return -1;
+    if(a.followers < b.followers) return 1;
     return 0;
   },
   'sortByName': sortByName
@@ -63,8 +63,8 @@ var SORTERS = {
 var defaultSorter = sortByName;
 
 function sortByName(a, b) { //default sort will be alphabetical
-    if(a.login < b.login) return -1;
-    if(a.login > b.login) return 1;
+    if(a.login.toLowerCase() < b.login.toLowerCase()) return -1;
+    if(a.login.toLowerCase() > b.login.toLowerCase()) return 1;
     return 0;
 }
 

@@ -7,25 +7,35 @@ block content
         h1 Git Scout
       .jumbotron
         p Git Search
+        form(method='get')
+          select(name='sort')
+            option(value='sortByRepos')  Sort By Repo
+            option(value='sortByGists')  Sort By Gists
+            option(value='sortByFollowers')  Sort By Followers
+            option(value='sortByName') Sort By Name
+          br
+          br
+          input(type='submit')
+
         // search box
-        .input-group
-          input.form-control(type='text', placeholder='Search for...')
-          span.input-group-btn
-            button.btn.btn-secondary(type='button') Go!
+        // .input-group
+        //   input.form-control(type='text', placeholder='Search for...')
+        //   span.input-group-btn
+        //     button.btn.btn-secondary(type='button') Go!
         // drop down
-        .dropdown.show
-          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-            | Location
-          .dropdown-menu(aria-labelledby='dropdownMenuLink')
-            a.dropdown-item(href='#') Wellington
-            a.dropdown-item(href='#') Auckland
-            a.dropdown-item(href='#') Other
-          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-            | Language
-          .dropdown-menu(aria-labelledby='dropdownMenuLink')
-            a.dropdown-item(href='#') Python
-            a.dropdown-item(href='#') Ruby
-            a.dropdown-item(href='#') Java
+        // .dropdown.show
+        //   button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        //     | Location
+        //   .dropdown-menu(aria-labelledby='dropdownMenuLink')
+        //     a.dropdown-item(href='#') Wellington
+        //     a.dropdown-item(href='#') Auckland
+        //     a.dropdown-item(href='#') Other
+        //   button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        //     | Language
+        //   .dropdown-menu(aria-labelledby='dropdownMenuLink')
+        //     a.dropdown-item(href='#') Python
+        //     a.dropdown-item(href='#') Ruby
+        //     a.dropdown-item(href='#') Java
     // User box thing
     .container
       .row
@@ -36,18 +46,18 @@ block content
                 .col-sm-12
                   .row
                     .col-sm-4
-                      p javascript
+                      p JavaScript
                     .col-sm-4
                       p Python
                     .col-sm-4
                       p Java
                   .row
                     .col-sm-4
-                      p javascript
+                      p
                     .col-sm-4
-                      p Python
+                      p
                     .col-sm-4
-                      p Java
+                      p
               hr
               .row.info
                 .col-sm-12
@@ -70,7 +80,8 @@ block content
                       h3 #{person.following}
                   .row
                     .col-sm-12
-                      p #{person.blog}
+                      p
+                        a(href=person.blog) #{person.blog}
                       p
                         a(href='mailto:'+person.email)  #{person.email}
               hr
