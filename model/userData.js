@@ -32,23 +32,29 @@ var User = function(userjson) {
 			/** STATS FOR EACH USER */
 
 User.prototype.setName = function() {
-	if(listjson.name != null)
+	if(listjson.name)
 		this.name = listjson.name;
 }
 
 User.prototype.setCompany = function() {
-	if(listjson.company != null)
+	if(listjson.company)
 		this.company = listjson.company;
+	else
+		this.company = "None";
 }
 
 User.prototype.setBio = function() {
-	if(listjson.bio != null)
+	if(listjson.bio)
 		this.bio = listjson.bio;
+	else
+		this.bio = "";
 }
 
 User.prototype.setEmail = function() {
-	if(listjson.email != null)
+	if(listjson.email)
 		this.email = listjson.email;
+	else
+		this.email = "";
 }
 
 User.prototype.getUrl = function() {
