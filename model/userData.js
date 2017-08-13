@@ -25,6 +25,7 @@ var User = function(userjson) {
 
 	this.avatar_url = userjson.avatar_url;
 	this.url = userjson.url;
+	this.blog = userjson.blog;
 }
 
 

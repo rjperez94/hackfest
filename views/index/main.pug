@@ -40,15 +40,17 @@ block content
         for person in user
           .col-lg-3.col-md-3.col-sm-6
             img.imgWidth(src='https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg')
-            h4 #{person.name + ' ' + person.hireable}
+
+            h4 #{person.login + ' ' + person.hireable}
+
             p
-              | Followers: 200
+              |  Followers: #{person.followers}
               br
-              |  Following: 15
+              |  Following: #{person.following}
               br
               |  Stars: 2290
               br
-              |  Repositories: 18
+              |  Repositories: #{person.public_repos}
               br
               |  Location: Wellington, New Zealand
               br
