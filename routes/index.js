@@ -10,6 +10,20 @@ var github = require('octonode');
 var fetch = require('node-fetch');
 var User = require('../model/userData.js');
 
+'use strict';
+var mkdirp = require('mkdirp');
+var getDirName = require('path').dirname;
+
+var express = require('express');
+var encode = require( 'hashcode' ).hashCode;
+var fs = require('fs');
+var router = express.Router();
+var github = require('octonode');
+var fetch = require('node-fetch');
+var User = require('../model/userData.js');
+
+
+
 // GET: /
 router.get('/', function(req, res) {
     var key ='&access_token=2e021ca997c1f7a8dd55b0884df4bc458d19a780';
@@ -41,42 +55,48 @@ router.get('/', function(req, res) {
       } else {
         fs.readFile(fname, function (err, data) {
           var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render
+          renderHome(res, users); //render 
         });
       }
   });
 });
-
-// GET: /
-router.get('/test2', function(req, res) {
-    var fname = "data/test/index.json";
-
-    fs.exists(fname,function(exists){
-      if (exists) {
-        fs.readFile(fname, function (err, data) {
-          var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render
-        });
-      }
-  });
-});
-
 
 //================================================================================================
 /** DETERMINE WHICH SORT TO USE */
 function sortUsers (req, users) {
-    var key = req.params.sort;
+    var key = req.query.sort;
     return users.sort(SORTERS[key] || defaultSorter);
 }
 
 /** SORTING USERS BY FILTER */
 var SORTERS = {
-  'numberOfStars': function sortByNumberOfStars () { }
+  'sortByRepos': function sortByRepos(a, b){
+    if(a.public_repos < b.public_repos) return -1;
+    if(a.public_repos > b.public_repos) return 1;
+    return 0;
+  },
+  'sortByGists': function sortByGists(a, b){
+    if(a.public_gists < b.public_gists) return -1;
+    if(a.public_gists > b.public_gists) return 1;
+    return 0;
+  },
+  'sortByFollowers': function sortByFollowers(a, b){
+    if(a.followers < b.followers) return -1;
+    if(a.followers > b.followers) return 1;
+    return 0;
+  },
+  'sortByName': sortByName
 };
 
-var defaultSorter = function () {
-   // default sort
+var defaultSorter = sortByName;
+
+function sortByName(a, b) { //default sort will be alphabetical
+    if(a.login < b.login) return -1;
+    if(a.login > b.login) return 1;
+    return 0;
 }
+
+
 
 //================================================================================================
 function renderHome (res, users) {
@@ -85,7 +105,9 @@ function renderHome (res, users) {
       user: users
   });
 }
+
 //======================================================================================
+
 router.get('/test', function(req, res) {
     var key ='&access_token=2e021ca997c1f7a8dd55b0884df4bc458d19a780';
     var hash = encode().value( req.query.query + key);
