@@ -26,39 +26,11 @@ var User = require('../model/userData.js');
 
 // GET: /
 router.get('/', function(req, res) {
-    var key ='&access_token=2e021ca997c1f7a8dd55b0884df4bc458d19a780';
-    var hash = encode().value( req.query.query + key);
-    var fname = "data/test/"+hash+".json";
-
-    fs.exists(fname,function(exists){
-      if (!exists) {
-        fetch(req.query.query+key)
-        .then(function(res) {
-            return res.json();
-        }).then(function(json) {
-          mkdirp(getDirName(fname), function (err) {
-            var contents = JSON.stringify(json);
-            console.log(contents);
-            fs.writeFile(fname, contents, function(err) {
-
-              if(err) {
-                return console.log(err);
-              }
-
-              var user = sortsUsers(json.items.map(function(user) {return new User(user);})); //store array of Users per sort function
-
-              renderHome(res, user); //render
-            });
-          });
-
-        });
-      } else {
+    var fname = "data/test/index.json";
         fs.readFile(fname, function (err, data) {
           var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render 
-        });
-      }
-  });
+          renderHome(res, users); //render
+        });     
 });
 
 //================================================================================================
