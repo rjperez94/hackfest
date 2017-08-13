@@ -11,9 +11,20 @@
 
 /* list of users in Wellington -- use login + id to get to each user's profile */
 
-var User = function(listjson) {
-	this.login = listjson.login; // = get name from json
-	this.id = listjson.id; //ONLY for unique id?
+var User = function(userjson) {
+	this.login = userjson.login; // = get name from json
+	this.id = userjson.id; //ONLY for unique id?
+
+	this.public_repos = userjson.public_repos;
+	this.public_gists = userjson.public_gists;
+
+	this.followers = userjson.followers;
+	this.following = userjson.following;
+
+	this.hireable = userjson.hireable
+
+	this.avatar_url = userjson.avatar_url;
+	this.url = userjson.url;
 }
 
 
@@ -39,16 +50,8 @@ User.prototype.setEmail = function() {
 		this.email = listjson.email;
 }
 
-User.prototype.set = function(userjson) {
-	this.public_repos = userjson.public_repos;
-	this.public_gists = userjson.public_gists;
-
-	this.followers = userjson.followers;
-	this.following = userjson.following;
-
-	this.hireable = userjson.hireable
-
-	this.avatar_url = userjson.avatar_url;
+User.prototype.getUrl = function() {
+	return this.url;	
 }
 //========================================================
 
