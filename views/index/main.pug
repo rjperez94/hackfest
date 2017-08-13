@@ -54,9 +54,10 @@ block content
               br
               |  Location: Wellington, New Zealand
               br
-              if(person.hireable){
+              if(person.hireable)
                 | This person is hireable
-              } 
+              else
+                | This person is not hireable
             // FIXME Collapse not
             p
               a(href='#col1Addition', data-toggle='collapse') move info
