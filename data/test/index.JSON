@@ -26,7 +26,8 @@
             "public_gists": 55,
             "followers": 1551,
             "following": 57,
-            "blog": "http://www.sanityinc.com/"
+            "blog": "http://www.sanityinc.com/",
+            "hireable": true
         },
         {
             "login": "JamesNK",
@@ -52,7 +53,8 @@
     "public_gists": 9,
     "followers": 469,
     "following": 0,
-    "blog": "http://james.newtonking.com"
+    "blog": "http://james.newtonking.com",
+    "hireable": null
         },
         {
             "login": "mmckegg",
@@ -78,7 +80,8 @@
     "public_repos": 189,
     "public_gists": 25,
     "followers": 374,
-    "following": 24
+    "following": 24,
+    "hireable": null
         },
         {
             "login": "NZKoz",
@@ -104,7 +107,8 @@
     "public_repos": 35,
     "public_gists": 71,
     "followers": 331,
-    "following": 0
+    "following": 0,
+    "hireable": null
         },
         {
             "login": "ahdinosaur",
@@ -130,7 +134,8 @@
     "public_repos": 493,
     "public_gists": 37,
     "followers": 321,
-    "following": 356
+    "following": 356,
+    "hireable": true
         },
         {
             "login": "unclecheese",
@@ -156,7 +161,8 @@
     "public_repos": 78,
     "public_gists": 6,
     "followers": 264,
-    "following": 0
+    "following": 0,
+    "hireable": null
         },
         {
             "login": "MostafaGazar",
@@ -182,7 +188,8 @@
     "public_repos": 27,
     "public_gists": 3,
     "followers": 199,
-    "following": 27
+    "following": 27,
+    "hireable": true
         },
         {
             "login": "bnolan",
@@ -208,7 +215,8 @@
     "public_repos": 86,
     "public_gists": 61,
     "followers": 193,
-    "following": 20
+    "following": 20,
+    "hireable": null
         },
         {
             "login": "edgurgel",
@@ -234,7 +242,8 @@
     "public_repos": 56,
     "public_gists": 13,
     "followers": 192,
-    "following": 76
+    "following": 76,
+    "hireable": null
         },
         {
             "login": "zoltan-nz",
@@ -260,7 +269,8 @@
     "public_repos": 158,
     "public_gists": 17,
     "followers": 179,
-    "following": 190
+    "following": 190,
+    "hireable": null
         },
         {
             "login": "layerssss",
@@ -286,7 +296,8 @@
     "public_repos": 95,
     "public_gists": 19,
     "followers": 165,
-    "following": 137
+    "following": 137,
+    "hireable": null
         },
         {
             "login": "nrc",
@@ -313,7 +324,8 @@
     "public_repos": 80,
     "public_gists": 9,
     "followers": 165,
-    "following": 0
+    "following": 0,
+    "hireable": null
         },
         {
             "login": "Widdershin",
@@ -339,7 +351,8 @@
     "public_repos": 186,
     "public_gists": 48,
     "followers": 156,
-    "following": 124
+    "following": 124,
+    "hireable": null
         },
         {
             "login": "dribnet",
@@ -365,7 +378,8 @@
     "public_repos": 112,
     "public_gists": 79,
     "followers": 153,
-    "following": 89
+    "following": 89,
+    "hireable": null
         },
         {
             "login": "chilts",
@@ -391,7 +405,8 @@
     "public_repos": 272,
     "public_gists": 40,
     "followers": 126,
-    "following": 24
+    "following": 24,
+    "hireable": null
         },
         {
             "login": "justinfx",
@@ -417,7 +432,8 @@
     "public_repos": 30,
     "public_gists": 56,
     "followers": 122,
-    "following": 8
+    "following": 8,
+    "hireable": null
         }
     ]
 }
