@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
       } else {
         fs.readFile(fname, function (err, data) {
           var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render 
+          renderHome(res, users); //render
         });
       }
   });
@@ -55,7 +55,7 @@ router.get('/test2', function(req, res) {
       if (exists) {
         fs.readFile(fname, function (err, data) {
           var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render 
+          renderHome(res, users); //render
         });
       }
   });
@@ -102,9 +102,9 @@ router.get('/test', function(req, res) {
                }
 
                 var list = json.items.map(function(user) {return new User(user);})
-                
+
                 array.forEach(function(item) {
-                
+
                   fetch(item.getUrl())
                      .then(function(res2) {
                          return res2.json();
@@ -125,11 +125,11 @@ router.get('/test', function(req, res) {
                       });
                     console.log(item.url);
                  })
-                
+
            });
          });
         });
-    console.log(fname); 
+    console.log(fname);
 });
 
 
