@@ -47,6 +47,21 @@ router.get('/', function(req, res) {
   });
 });
 
+// GET: /
+router.get('/test2', function(req, res) {
+    var fname = "data/test/index.json";
+
+    fs.exists(fname,function(exists){
+      if (exists) {
+        fs.readFile(fname, function (err, data) {
+          var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
+          renderHome(res, users); //render 
+        });
+      }
+  });
+});
+
+
 //================================================================================================
 /** DETERMINE WHICH SORT TO USE */
 function sortUsers (req, users) {
@@ -88,14 +103,13 @@ router.get('/test', function(req, res) {
 
                 var list = json.items.map(function(user) {return new User(user);})
                 
-
-                for (var i=0;i<list.length;i++) {
-                  console.log(list[0]);
-                  fetch(list[i].getUrl())
+                array.forEach(function(item) {
+                
+                  fetch(item.getUrl())
                      .then(function(res2) {
                          return res2.json();
                      }).then(function(json2) {
-                        var hash2 = encode().value( list[i].getUrl() );
+                        var hash2 = encode().value( item.getUrl() );
                         var fname2 = "data/test/"+hash2+".json";
                         console.log(hash2);
                         console.log(fname2);
@@ -109,8 +123,9 @@ router.get('/test', function(req, res) {
                          });
 
                       });
-                    console.log(list[i].url);
-                }
+                    console.log(item.url);
+                 })
+                
            });
          });
         });
