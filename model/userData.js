@@ -32,23 +32,36 @@ var User = function(userjson) {
 			/** STATS FOR EACH USER */
 
 User.prototype.setName = function() {
-	if(listjson.name != null)
-		this.name = listjson.name;
+	if(userjson.name)
+		this.name = userjson.name;
 }
 
 User.prototype.setCompany = function() {
-	if(listjson.company != null)
-		this.company = listjson.company;
+	if(userjson.company)
+		this.company = userjson.company;
+	else
+		this.company = "None";
 }
 
 User.prototype.setBio = function() {
-	if(listjson.bio != null)
-		this.bio = listjson.bio;
+	if(userjson.bio)
+		this.bio = userjson.bio;
+	else
+		this.bio = "";
 }
 
 User.prototype.setEmail = function() {
-	if(listjson.email != null)
-		this.email = listjson.email;
+	if(userjson.email)
+		this.email = userjson.email;
+	else
+		this.email = "";
+}
+
+User.prototype.setBlog = function() {
+	if(userjson.blog)
+		this.blog = userjson.blog;
+	else
+		this.blog = "";
 }
 
 User.prototype.getUrl = function() {
