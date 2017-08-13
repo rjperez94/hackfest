@@ -72,11 +72,13 @@ block content
                     .col-sm-12
                       p #{person.blog}
                       p
-                        a(href= 'mailto:'+person.email)  #{person.email}
+                        a(href='mailto:'+person.email)  #{person.email}
               hr
               .row
                 .col-sm-12
-                  p Per Something
+                  h3
+                    a(href='http://www.github.com/'+person.login) #{person.login}
+                  p #{person.name}
                   p
                     img(src='https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg', width='15px')
                     |  New Zealand
