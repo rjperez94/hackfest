@@ -13,103 +13,121 @@ var User = require('../model/userData.js');
 
 // GET: /
 router.get('/', function(req, res) {
-    var fname = "data/test/index.json";
-        fs.readFile(fname, function (err, data) {
-          var users = sortUsers(req, JSON.parse(data).items.map(function(user) {return new User(user);})) //store array of Users per sort function
-          renderHome(res, users); //render
+  var loc = req.query.loc;
+  var query = 'https://api.github.com/search/users?q=location:'+loc;
+  var hash = encode().value( query );
+  var fname = "data/test/"+hash+".json";
+
+  fs.exists(fname,function(exists){
+    var exists =false;
+    if (!exists) {
+      fetch(query)
+      .then(function(res) {
+        return res.json();
+      }).then(function(json) {
+        mkdirp(getDirName(fname), function (err) {
+          var contents = JSON.stringify(json);
+          fs.writeFile(fname, contents, function(err) {
+            if(err) {
+              return console.log(err);
+            }
+          });
         });
-});
+        var list = json.items.map(function(user) {return new User(user);});
+        list.forEach(function(item) {
+          var query='https://api.github.com/users/'+item.login;
+          var hash = encode().value( query );
+          var fname = "data/test/"+hash+".json";
 
-//================================================================================================
-/** DETERMINE WHICH SORT TO USE */
-function sortUsers (req, users) {
-    var key = req.query.sort;
-    return users.sort(SORTERS[key] || defaultSorter);
-}
+          fetch(query)
+          .then(function(res) {
+            return res.json();
+          }).then(function(json) {
+            mkdirp(getDirName(fname), function (err) {
+              var contents = JSON.stringify(json);
+              fs.writeFile(fname, contents, function(err) {
+                if(err) {
+                  return console.log(err);
+                }
+              });
+            });
+            console.log(item.login);
+            console.log(json);
+            item.setOtherParams(json);
+          });
 
-/** SORTING USERS BY FILTER */
-var SORTERS = {
-  'sortByRepos': function sortByRepos(a, b){
-    if(a.public_repos > b.public_repos) return -1;
-    if(a.public_repos < b.public_repos) return 1;
-    return 0;
-  },
-  'sortByGists': function sortByGists(a, b){
-    if(a.public_gists > b.public_gists) return -1;
-    if(a.public_gists < b.public_gists) return 1;
-    return 0;
-  },
-  'sortByFollowers': function sortByFollowers(a, b){
-    if(a.followers > b.followers) return -1;
-    if(a.followers < b.followers) return 1;
-    return 0;
-  },
-  'sortByName': sortByName
-};
-
-var defaultSorter = sortByName;
-
-function sortByName(a, b) { //default sort will be alphabetical
-    if(a.login.toLowerCase() < b.login.toLowerCase()) return -1;
-    if(a.login.toLowerCase() > b.login.toLowerCase()) return 1;
-    return 0;
-}
+        });
+        res.render('index/main', {
+          title: 'Home',
+          user: list
+        });
+      });
 
 
 
-//================================================================================================
-function renderHome (res, users) {
-  res.render('index/main', {
-      title: 'Home',
-      user: users
+    } else {
+      fs.readFile(fname, function (err, data) {
+        var list = JSON.parse(data).items.map(function(user) {return new User(user);});
+        list.forEach(function(item) {
+          var query='https://api.github.com/users/'+item.login;
+          var hash = encode().value( query );
+          var fname2 = "data/test/"+hash+".json";
+          fs.readFile(fname2, function (err, data2) {
+            console.log(JSON.parse(data2));
+            if(data2) {
+              item.setOtherParams(JSON.parse(data2));
+            }
+          });
+        });
+        res.render('index/main', {
+          title: 'Home',
+          user: list
+        });
+      });
+    }
   });
-}
+});
 
 //======================================================================================
 
 router.get('/test', function(req, res) {
-    var hash = encode().value( req.query.query);
-    var fname = "data/test/"+hash+".json";
-    fetch(req.query.query)
-       .then(function(res) {
-           return res.json();
-       }).then(function(json) {
-         mkdirp(getDirName(fname), function (err) {
-           var contents = JSON.stringify(json);
-           fs.writeFile(fname, contents, function(err) {
-               if(err) {
-                   return console.log(err);
-               }
+  var hash = encode().value( req.query.query);
+  var fname = "data/test/"+hash+".json";
+  fetch(req.query.query)
+  .then(function(res) {
+    return res.json();
+  }).then(function(json) {
+    mkdirp(getDirName(fname), function (err) {
+      var contents = JSON.stringify(json);
+      fs.writeFile(fname, contents, function(err) {
+        if(err) {
+          return console.log(err);
+        }
 
-                var list = json.items.map(function(user) {return new User(user);})
+        var list = json.items.map(function(user) {return new User(user);})
 
-                list.forEach(function(item) {
+        list.forEach(function(item) {
+          fetch(item.url)
+          .then(function(res2) {
+            return res2.json();
+          }).then(function(json2) {
+            var hash2 = encode().value( item.url );
+            var fname2 = "data/test/"+hash2+".json";
+            mkdirp(getDirName(fname2), function (err) {
+              var contents2 = JSON.stringify(json2);
+              fs.writeFile(fname2, contents2, function(err) {
+                if(err) {
+                  return console.log(err);
+                }
+              });
+            });
 
-                  fetch(item.url)
-                     .then(function(res2) {
-                         return res2.json();
-                     }).then(function(json2) {
-                        var hash2 = encode().value( item.url );
-                        var fname2 = "data/test/"+hash2+".json";
-                        console.log(hash2);
-                        console.log(fname2);
-                         mkdirp(getDirName(fname2), function (err) {
-                           var contents2 = JSON.stringify(json2);
-                           fs.writeFile(fname2, contents2, function(err) {
-                               if(err) {
-                                   return console.log(err);
-                               }
-                           });
-                         });
+          });
+        })
 
-                      });
-                    console.log(item.url);
-                 })
-
-           });
-         });
-        });
-    console.log(fname);
+      });
+    });
+  });
 });
 
 
