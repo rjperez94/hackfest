@@ -6,22 +6,16 @@ block content
       .page-header
         h1 Git Scout
       .jumbotron
-        p Git Search
         form(method='get')
           select(name='sort')
+            option(value='sortByName') Sort By Name
             option(value='sortByRepos')  Sort By Repo
             option(value='sortByGists')  Sort By Gists
             option(value='sortByFollowers')  Sort By Followers
-            option(value='sortByName') Sort By Name
           br
           br
           input(type='submit')
 
-        // search box
-        // .input-group
-        //   input.form-control(type='text', placeholder='Search for...')
-        //   span.input-group-btn
-        //     button.btn.btn-secondary(type='button') Go!
         // drop down
         // .dropdown.show
         //   button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
@@ -86,10 +80,15 @@ block content
                         a(href='mailto:'+person.email)  #{person.email}
               hr
               .row
-                .col-sm-12
+                .col-sm-5
+                  img(src=person.avatar_url, width='100px')
+                .col-sm-7
                   h3
                     a(href='http://www.github.com/'+person.login) #{person.login}
-                  p #{person.name}
+                  p  #{person.name}
+                  if person.company
+                    p #{person.company}
+                  else
+                    p  No Company
                   p
-                    img(src='https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg', width='15px')
-                    |  New Zealand
+                    |  Wellington, New Zealand
