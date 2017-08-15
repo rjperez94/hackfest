@@ -1,47 +1,50 @@
-nav(class='navbar navbar-inverse')
-  div(class='container-fluid')
+nav(class='navbar navbar-default navbar-fixed-top')
+  div(class='container')
     div(class='navbar-header')
-      button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar')
+      button(class='navbar-toggle' type='button' data-toggle='collapse' data-target='#navbar-main')
         span(class='icon-bar')
         span(class='icon-bar')
         span(class='icon-bar')
-
-      a(class='navbar-brand' href='main') SiteName
-
-    div(class='collapse navbar-collapse' id='myNavbar')
-      ul(class='nav navbar-nav')
-        li(class='dropdown')
-          a(class='dropdown-toggle' data-toggle='dropdown' href='#') Item1
-            span(class='caret')
-          ul(class='dropdown-menu')
-            li
-              a(
-                href='#'
-              ) SubItem1
-            li
-              a(
-                href='#'
-              ) SubItem2
-
-        li(class='dropdown')
-          a(class='dropdown-toggle' data-toggle='dropdown' href='#') Item2
-            span(class='caret')
-          ul(class='dropdown-menu')
-            li
-              a(
-                href='#'
-              ) SubItem1
-            li
-              a(
-                href='#'
-              ) SubItem2
-
-      ul(class='nav navbar-nav navbar-right')
-        li
-          a(
-            href='edit'
-          ) Hi #{username}
-        li
-          a(
-            href='logout'
-          ) Logout
+          
+      a(class='navbar-brand' href='/') GitScout
+      
+    center
+      div(class='navbar-collapse collapse' id='navbar-main')
+        ul(class='nav navbar-nav')
+          li
+            form(action='/location' method='post' class='navbar-form' role='form')
+              div(class='form-group')
+                input(type='text' name='loc' class='form-control')
+              div(class='form-group')
+                input(type='submit' class='btn btn-default' value='Go')
+          li
+            form(action='/sort' method='post' class='navbar-form' role='form')
+              div(class='form-group')
+                select(name='sortKey' class='form-control')
+                  option(value='Gists') Gist
+                  option(value='Repositories') Repositories
+                  option(value='Followers') Followers
+                  option(value='Following') Following
+              div(class='form-group')
+                input(type='submit' class='btn btn-default' value='Sort')
+        
+        ul(class='nav navbar-nav navbar-right')
+          li
+              div(class='form-group')
+              span
+                span(class='label label-primary') Highlight:
+                label(class='checkbox-inline' for='highlight') 
+                  input(type='checkbox' onchange='handleChange(this);')
+                  span Gist
+                label(class='checkbox-inline' for='highlight')
+                  input(type='checkbox' onchange='handleChange(this);')
+                  span Repositories
+                label(class='checkbox-inline' for='highlight')
+                  input(type='checkbox' onchange='handleChange(this);')
+                  span Followers
+                label(class='checkbox-inline' for='highlight')
+                  input(type='checkbox' onchange='handleChange(this);')
+                  span Following
+                  
+        
+          

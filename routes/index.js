@@ -13,6 +13,9 @@ var FullUser = require('../model/FullUser.js');
 // GET: /
 router.get('/', function(req, res) {
   var loc = req.query.loc;
+  if(!req.query.loc) {
+    loc = 'Wellington';
+  }
   var query = 'https://api.github.com/search/users?q=location:'+loc+'+sort:followers';
   var hash = encode().value( query );
   var fname = "data/test/"+hash+".json";

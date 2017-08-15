@@ -6,3 +6,31 @@ body {
 	padding-left: 1.82%;
 	padding-right: 1.82%;
 }
+
+#container {
+    border: 2px dashed #444;
+    height: 125px;
+
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+
+    /* just for demo */
+    min-width: 950px;
+}
+
+#container > div {
+    width: 150px;
+    height: 125px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1
+}
+#container:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}

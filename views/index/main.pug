@@ -1,95 +1,30 @@
 extends ../shared/layout.pug
 
 block content
-
-    .container
-      .page-header
-        h1 gitscout
-      .jumbotron
-        form(method='get')
-          select(name='sort')
-            option(value='sortByName') Sort By Name
-            option(value='sortByRepos')  Sort By Repo
-            option(value='sortByGists')  Sort By Gists
-            option(value='sortByFollowers')  Sort By Followers
-          br
-          br
-          input(type='submit')
-
-        // drop down
-        // .dropdown.show
-        //   button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-        //     | Location
-        //   .dropdown-menu(aria-labelledby='dropdownMenuLink')
-        //     a.dropdown-item(href='#') Wellington
-        //     a.dropdown-item(href='#') Auckland
-        //     a.dropdown-item(href='#') Other
-        //   button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-        //     | Language
-        //   .dropdown-menu(aria-labelledby='dropdownMenuLink')
-        //     a.dropdown-item(href='#') Python
-        //     a.dropdown-item(href='#') Ruby
-        //     a.dropdown-item(href='#') Java
-    // User box thing
-    .container
-      .row
-        for person in user
-          .col-md-3.col-sm-6.user
-            .usercontent
-              .row.text-center.languages
-                .col-sm-12
-                  .row
-                    .col-sm-4
-                      p JavaScript
-                    .col-sm-4
-                      p Python
-                    .col-sm-4
-                      p Java
-                  .row
-                    .col-sm-4
-                      p
-                    .col-sm-4
-                      p
-                    .col-sm-4
-                      p
-              hr
-              .row.info
-                .col-sm-12
-                  .row.text-center
-                    .col-sm-4
-                      p Gist
-                      h3  #{person.public_gists}
-                    .col-sm-4
-                      p Repositories
-                      h3 #{person.public_repos}
-                    .col-sm-4
-                      p Contributions
-                      h3 220
-                  .row.text-center.info1
-                    .col-sm-4
-                      p Followers
-                      h3  #{person.followers}
-                    .col-sm-4
-                      p Following
-                      h3 #{person.following}
-                  .row
-                    .col-sm-12
-                      p
-                        a(href=person.blog) #{person.blog}
-                      p
-                        a(href='mailto:'+person.email)  #{person.email}
-              hr
-              .row
-                .col-sm-5
-                  img(src=person.avatar_url, width='100px')
-                .col-sm-7
-                  h3
-                    a(href='http://www.github.com/'+person.login) #{person.login}
-                  p  #{person.name}
-                  .company
-                    if person.company
-                      p #{person.company}
-                    else
-                      p  No Company
-                    p
-                      |  Wellington, New Zealand
+  include ../shared/nav.pug
+  div(id='container')
+    for person in user
+      div
+        p Gist
+        h3  #{person.public_gists}
+        p Repositories
+        h3 #{person.public_repos}      
+        p Followers
+        h3  #{person.followers}
+        p Following
+        h3 #{person.following}
+        p
+          a(href=person.blog) #{person.blog}
+        p
+          a(href='mailto:'+person.email)  #{person.email}
+        hr
+        img(src=person.avatar_url, width='100px')
+        h3
+        a(href='http://www.github.com/'+person.login) #{person.login}
+        p  #{person.name}
+        if person.company
+          p #{person.company}
+        else
+          p  No Company
+        p
+          |  Wellington, New Zealand
