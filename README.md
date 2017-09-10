@@ -4,18 +4,18 @@
 
 ### Lead mentor
 
-Van
+- Van
 
 ### Developer
 
-Jeremy
-Ronni
-Matthew
-Daniel
+- Jeremy
+- Ronni
+- Matthew
+- Daniel
 
 ### Designer
 
-Calvin
+- Calvin
 
 ## Vision
 
